@@ -18,7 +18,7 @@ jobs:
     steps:
     # clones weatherapp repo to $GITHUB_WORKSPACE which is the working directory of the runner
     - name: Checkout Repository
-    - uses: actions/checkout@v4
+      uses: actions/checkout@v4
 
     # Setup a dotnet cli environment with dotnet version 8 where you can run the dotnet restore and build command below
     - name: Setup .NET Environment 
