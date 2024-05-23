@@ -36,7 +36,7 @@ jobs:
       run: dotnet build --no-restore
 
     - name: Publish
-      run: dotnet publish -c Release -o ${{env.GITHUB_WORKSPACE}}/publish
+      run: dotnet publish -c Release -o ${{env.GITHUB_WORKSPACE}}/weatherapp-release
       
       # Log env 
     - name: Execute the following commands
