@@ -39,6 +39,7 @@ jobs:
           path: ./weatherapp-release
     
   Logger:
+    needs: publish-application
     name: Log to console
     runs-on: ubuntu-latest
     steps:
