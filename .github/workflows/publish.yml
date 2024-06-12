@@ -3,7 +3,8 @@
 
 name: Build Weather App
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch
 
 jobs:
 # Name of job is publish-application
