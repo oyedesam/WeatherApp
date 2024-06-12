@@ -1,0 +1,42 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Build Weather App
+
+on: 
+  workflow_dispatch
+
+jobs:
+# Name of job is publish-application
+  publish-application:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    # clones weatherapp repo to $GITHUB_WORKSPACE, which is the working directory of the runner or download the repository to the runner
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    # install a dotnet cli environment on the runner and also installs dotnet version 8. Doing this different dotnet cli commands
+    # such as dotnet restore, dotnet build, and dotnet publish can be executed on the runner.
+    
+    - name: Setup .NET Environment 
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+      # Download any missing packages
+    - name: Restore Application dependencies
+      run: dotnet restore
+      # Build the application
+    - name: Build Application Code
+      run: dotnet build --no-restore
+
+    - name : Publish Application code 
+      run: dotnet publish -c Release -o weatherapp-release
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: weatherapp-release
+        path: ./weatherapp-release
+    
+    - name: Log
+      run: echo "The job was successfully completed"
