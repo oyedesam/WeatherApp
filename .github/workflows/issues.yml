@@ -1,0 +1,13 @@
+name: Handle Issues
+
+on: issues
+
+
+jobs:
+    output-details:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Log Issue Details
+              run: |
+                echo "Issue Title: ${{ github.event.issue.title }}"
+                echo "Issue Body: ${{ github.event.issue.body }}"
