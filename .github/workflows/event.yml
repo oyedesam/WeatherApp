@@ -1,0 +1,35 @@
+name: Events Acvities
+
+on:
+    pull_request:
+        types: [opened, reopened]
+
+    workflow_dispatch:
+        inputs:
+            pr-title:
+                description: 'Pull Request Title'
+                required: true
+                default: 'Default Title'
+            pr-body:
+                description: 'Pull Request Body'
+                required: true
+                default: 'Default Body'
+            pr-number:
+                description: 'Pull Request Number'
+                required: true
+                default: 'Default Number'
+            pr-state:
+                description: 'Pull Request State'
+                required: true
+                default: 'Default State'
+
+jobs: 
+    output:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Output events 
+              run: |
+                    echo "Pull Request Title: ${{ github.event.pull_request.title }}"
+                    echo "Pull Request Body: ${{ github.event.pull_request.body }}"
+                    echo "Pull Request Number: ${{ github.event.pull_request.number }}"
+                    echo "Pull Request State: ${{ github.event.pull_request.state }}"
