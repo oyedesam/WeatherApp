@@ -2,7 +2,16 @@ name: Events Acvities
 
 on:
     pull_request:
-        types: [opened, reopened]
+        types: 
+            - opened
+        branches:
+            - feature
+    push:
+        branches:
+            - master
+            - RR*
+        paths-ignore:
+            - '.github/workflows/event.yml'
 jobs: 
     output:
         runs-on: ubuntu-latest
