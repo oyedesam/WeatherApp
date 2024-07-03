@@ -10,7 +10,10 @@ on:
         branches:
             - master
             - RR*
-        paths-ignore:
+            # Ignores the changges in this file and workflows doesn't execute it 
+        # paths-ignore:
+        #     - '.github/workflows/event.yml'
+        paths:
             - '.github/workflows/event.yml'
 jobs: 
     output:
